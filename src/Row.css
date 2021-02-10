@@ -1,0 +1,141 @@
+.row {
+	color: white;
+	margin-left: 20px;
+	flex: 0 0 calc(100% - 400px - 2rem);
+	margin-right: 2rem;
+	position: relative;
+}
+
+.row > h2 {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.row::-webkit-scrollbar {
+	background-color: transparent;
+	display: none;
+}
+
+.row__posters {
+	width: 100%;
+	display: flex;
+	padding: 10px;
+	margin-left: -10px;
+	margin-top: -10px;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.row__posters::-webkit-scrollbar {
+	background-color: transparent;
+	display: none;
+}
+
+.row__posters > .list__item {
+	flex: 0 0 200px;
+	height: 300px;
+	background: #fff;
+	border-radius: 1rem;
+	overflow: hidden;
+	position: relative;
+	box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px,
+		rgba(0, 0, 0, 0.14) 0 4px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 10px 0;
+	cursor: pointer;
+}
+
+.row__posters > .list__item + .list__item {
+	margin-left: 1.2rem;
+}
+
+.row__posters::-webkit-scrollbar {
+	display: none;
+}
+
+.list__item > img {
+	width: 100%;
+	height: 100%;
+	transform: scale(1.1);
+	transition: all 0.2s ease-out;
+	object-fit: contain;
+}
+
+.list__item:hover > img {
+	transform: scale(1);
+}
+
+.list__item::before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	background-image: radial-gradient(
+		ellipse farthest-side at 0 100%,
+		#2c3e50,
+		transparent
+	);
+	background-size: 150% 150%;
+	background-position: 0 0;
+	top: 0;
+	left: 0;
+	transition: all 0.2s;
+	z-index: 1;
+}
+
+.list__item:hover::before {
+	background-position: 0% 100%;
+}
+
+.list__itemInfo {
+	position: absolute;
+	left: 0;
+	bottom: -8rem;
+	padding: 1rem;
+	z-index: 9;
+	width: 100%;
+	transition: bottom 0.2s ease-in;
+}
+
+.list__item:hover .list__itemInfo {
+	bottom: 0;
+}
+
+.list__itemTitle {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 95%;
+	margin-bottom: 1rem;
+	transition: margin-bottom 0.2s ease-out;
+}
+
+.list__item:hover .list__itemTitle {
+	margin-bottom: 0.5rem;
+}
+
+.list__itemYear {
+	font-size: 0.85rem;
+	margin-left: 0.5rem;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+	opacity: 0.75;
+}
+
+.list__itemButton {
+	padding: 6px 8px;
+	font-size: 0.8rem;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	background-color: rgba(89, 188, 218, 0.63);
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.list__itemButton:hover {
+	color: #000;
+	background-color: #e6e6e6;
+	transition: all 0.2s;
+}
