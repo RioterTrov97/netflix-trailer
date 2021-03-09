@@ -7,17 +7,23 @@ import { auth } from './firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from './features/userSlice';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import { useState } from 'react';
+import LoadingScreen from './LoadingScreen';
 
 function App() {
 	const user = useSelector(selectUser);
+	const [loading, setLoading] = useState(true);
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		setLoading(true);
 		const unsubscribe = auth.onAuthStateChanged((userAuth) => {
 			if (userAuth) {
+				setLoading(false);
 				dispatch(login({ uid: userAuth.uid, email: userAuth.email }));
 			} else {
+				setLoading(false);
 				dispatch(logout());
 			}
 		});
@@ -29,7 +35,11 @@ function App() {
 		<div className="app">
 			<Router>
 				{!user ? (
-					<LoginScreen />
+					loading ? (
+						<LoadingScreen />
+					) : (
+						<LoginScreen />
+					)
 				) : (
 					<Switch>
 						<Route path="/profile">
