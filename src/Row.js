@@ -5,7 +5,6 @@ import { useState } from 'react';
 import './Row.css';
 import Grow from '@material-ui/core/Grow';
 import ModalVideo from 'react-modal-video';
-import './YoutubePlayer.css';
 
 function Row({ title, type, fetchUrl, isLargeRow }) {
 	const [movies, setMovies] = useState([]);
